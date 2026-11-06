@@ -1,17 +1,14 @@
-# Mineral assay analytics
+I merged this into my existing [lab-assay-lims project](https://github.com/jackaI1/lab-assay-lims/tree/main/projects/titration-curve-analysis). The current code is in `projects/titration-curve-analysis/` there. I kept the code here so older links still work.
 
-I built a tool for analyzing laboratory measurements because I wanted to turn messy readings into results I could check. It reads titration measurements to find when a reaction finishes, estimates a sample's concentration, and compares repeated runs. It also fits peaks in an X-ray fluorescence (XRF) spectrum and checks whether a flotation separation's assays add up.
+The move keeps the original layout, including `mineral_assay/__init__.py`, `mineral_assay/cli.py`, `mineral_assay/titration.py`, `mineral_assay/xrf.py`. I replaced the README with the report below and left out Git history, installed dependencies, caches and generated build output from the hub copy.
 
-The included data are simulated, so I can try the calculations without lab equipment. A short report combines the results with plots. To run it, install Python 3.9 or newer, then in this folder run:
+The project checks are configured in the hub at `.github/workflows/titration-curve-analysis-test.yml`, with commands run from this project folder and changes filtered to its paths.
 
-```sh
-python3 -m venv .venv
-source .venv/bin/activate
-python -m pip install -e '.[test]'
-mineral-assay --output report
-```
+---
 
-Open `report/report.md` and its two images. Run `pytest -q` to check the calculations. The report uses files in `examples/`; `--data` selects another directory with the same filenames and columns.
+# titration-curve-analysis
+
+I built a tool for analyzing laboratory measurements to learn how the underlying idea works. This is a learning project.
 
 ## Working with measurements
 
@@ -40,4 +37,10 @@ Flotation separates a feed into concentrate and tailings. `mineral_assay.flotati
 
 The derivative methods interpolate uneven additions onto a uniform grid, smooth with a Savitzky-Golay filter and find a peak or nearby zero crossing. Choose the smoothing window and search range based on the curve. Gran fits require pH and a user-selected linear region: the implemented strong-acid and weak-acid formulas assume acid titrated with strong base. They are not general-purpose formulas for bases, polyprotic systems or activity corrections. Synthetic acid curves include an exact charge balance and noise; the weak-acid test uses a buffer approximation. These methods should be checked against standards and real laboratory measurements before use for decisions.
 
-The XRF model uses fixed line energies and a common peak width; it is a starting point, not a full spectral identification system. The flotation model assumes a steady, two-product, single-element circuit and known measurement standard deviations. The example report and tests exercise all three calculations. GitHub Actions runs the tests and report on Python 3.9 and 3.12.
+## Tests and limits
+
+There are 1 test source files in this copy. That source count does not establish an execution result. This is a source snapshot, and running it on a new machine may need environment-specific setup.
+
+
+
+Retained project workflows: `titration-curve-analysis-test.yml`. Their commands use this folder and their triggers use its paths.
