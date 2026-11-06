@@ -1,6 +1,6 @@
 # Mineral assay analytics
 
-I built a mineral assay analysis tool because I wanted to turn messy lab measurements into results I could check. It reads titration measurements to find when a reaction finishes, estimates a sample's concentration, and compares repeated runs. It also fits peaks in an X-ray fluorescence (XRF) spectrum and checks whether a flotation separation's assays add up.
+I built a tool for analyzing laboratory measurements because I wanted to turn messy readings into results I could check. It reads titration measurements to find when a reaction finishes, estimates a sample's concentration, and compares repeated runs. It also fits peaks in an X-ray fluorescence (XRF) spectrum and checks whether a flotation separation's assays add up.
 
 The included data are simulated, so I can try the calculations without lab equipment. A short report combines the results with plots. To run it, install Python 3.9 or newer, then in this folder run:
 
